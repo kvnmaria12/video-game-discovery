@@ -22,20 +22,19 @@ const useGames = () => {
   useEffect(() => {
     setIsLoading(true);
     apiClient
-      .get<FetchGamesResponse>('/games', { signal: controller.signal })
+      .get<FetchGamesResponse>('/games')
       .then((res) => {
         setGames(res.data.results);
         setIsLoading(false);
       })
       .catch((err) => {
         if (err instanceof CanceledError) return;
+        setIsLoading(false);
         setError((err as AxiosError).message);
       });
-
-    return () => controller.abort();
   }, []);
 
-  return [games, isLoading, error] as const;
+  return { games, isLoading, error } as const;
 };
 
 export default useGames;
