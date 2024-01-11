@@ -5,6 +5,8 @@ import GameCard from './GameCard';
 const GameGrid = () => {
   const { games, isLoading, error } = useGames();
 
+  console.log(games);
+
   return (
     <>
       {error && (
