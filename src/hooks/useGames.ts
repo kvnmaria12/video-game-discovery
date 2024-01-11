@@ -17,8 +17,6 @@ const useGames = () => {
   const [error, setError] = useState<string>('');
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
-  const controller = new AbortController();
-
   useEffect(() => {
     setIsLoading(true);
     apiClient
