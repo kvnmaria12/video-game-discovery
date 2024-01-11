@@ -1,3 +1,4 @@
+import { CanceledError } from 'axios';
 import apiClient, { AxiosError } from '../services/apiClient';
 import { useEffect, useState } from 'react';
 
@@ -26,7 +27,10 @@ const useGames = () => {
         setGames(res.data.results);
         setIsLoading(false);
       })
-      .catch((err) => setError((err as AxiosError).message));
+      .catch((err) => {
+        if (err instanceof CanceledError) return;
+        setError((err as AxiosError).message);
+      });
 
     return () => controller.abort();
   }, []);
