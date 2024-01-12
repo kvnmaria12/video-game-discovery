@@ -1,5 +1,6 @@
 import useGames from '../hooks/useGames';
 import GameCard from './GameCard';
+import GameCardContainer from './GameCardContainer';
 
 const GameCards = () => {
   const { games } = useGames();
@@ -10,7 +11,9 @@ const GameCards = () => {
     <>
       {games.map((game) => (
         //   <li key={game.id}>{game.name}</li>
-        <GameCard game={game} key={game.id} />
+        <GameCardContainer>
+          <GameCard game={game} key={game.id} />
+        </GameCardContainer>
       ))}
     </>
   );
