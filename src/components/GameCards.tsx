@@ -3,16 +3,14 @@ import GameCard from './GameCard';
 import GameCardContainer from './GameCardContainer';
 
 const GameCards = () => {
-  const { games } = useGames();
-
-  console.log(games);
+  const { data } = useGames();
 
   return (
     <>
-      {games.map((game) => (
+      {data.map((game) => (
         //   <li key={game.id}>{game.name}</li>
-        <GameCardContainer>
-          <GameCard game={game} key={game.id} />
+        <GameCardContainer key={game.id}>
+          <GameCard game={game} />
         </GameCardContainer>
       ))}
     </>

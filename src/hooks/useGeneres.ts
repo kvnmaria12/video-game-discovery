@@ -1,32 +1,23 @@
 import useData from './useData';
 
-export interface Platform {
+export interface Genre {
   id: number;
   name: string;
-  slug: string;
 }
 
-export interface Game {
-  id: number;
-  name: string;
-  background_image: string;
-  parent_platforms: { platform: Platform }[];
-  metacritic: number;
-}
+const useGenres = () => useData<Genre>('/genres');
 
-const useGames = () => useData<Game>('/games');
-
-// const useGames = () => {
-//   const [games, setGames] = useState<Game[]>([]);
+// const useGenres = () => {
+//   const [genres, setGenres] = useState<Genre[]>([]);
 //   const [error, setError] = useState<string>('');
 //   const [isLoading, setIsLoading] = useState<boolean>(false);
 
 //   useEffect(() => {
 //     setIsLoading(true);
 //     apiClient
-//       .get<FetchGamesResponse>('/games')
+//       .get<FetchGenresResponse>('/genres')
 //       .then((res) => {
-//         setGames(res.data.results);
+//         setGenres(res.data.results);
 //         setIsLoading(false);
 //       })
 //       .catch((err) => {
@@ -36,7 +27,7 @@ const useGames = () => useData<Game>('/games');
 //       });
 //   }, []);
 
-//   return { games, isLoading, error } as const;
+//   return { genres, isLoading, error } as const;
 // };
 
-export default useGames;
+export default useGenres;
