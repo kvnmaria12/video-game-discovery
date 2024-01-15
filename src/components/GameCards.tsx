@@ -1,9 +1,13 @@
-import useGames from '../hooks/useGames';
+import { Game } from '../hooks/useGames';
 import GameCard from './GameCard';
 import GameCardContainer from './GameCardContainer';
 
-const GameCards = () => {
-  const { data } = useGames();
+interface Props {
+  data: Game[];
+}
+
+const GameCards = ({ data }: Props) => {
+  // const { data } = useGames();
 
   return (
     <>
